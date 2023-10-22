@@ -6,7 +6,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-        DENO_DIR: ${{ runner.workspace }}/.deno
+        DENO_DIR: $HOME/.cache/deno
     steps:
       - uses: actions/checkout@v3
       - name: Cache Deno dependencies 
