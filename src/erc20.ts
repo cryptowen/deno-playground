@@ -1,7 +1,7 @@
-import { Contract, JsonRpcProvider, Wallet } from "npm:ethers@^6";
-import { load } from "https://deno.land/std@0.204.0/dotenv/mod.ts";
+import { Contract, JsonRpcProvider } from "npm:ethers@^6";
+// import { load } from "https://deno.land/std@0.204.0/dotenv/mod.ts";
 
-const env = await load();
+// const env = await load();
 
 const ENDPOINT_URL = "https://bsc.nodereal.io";
 
