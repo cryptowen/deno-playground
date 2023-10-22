@@ -29,7 +29,6 @@ async function main() {
     "0x69E26f6Dac726C08630376E1ca04bf0008364138",
   );
   console.log("balance", balance.toString());
-  throw new Error("test");
 }
 
 main();
