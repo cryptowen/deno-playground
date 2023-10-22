@@ -1,0 +1,5 @@
+{
+  "tasks": {
+    "erc20": "deno run -A src/erc20.ts"
+  }
+}

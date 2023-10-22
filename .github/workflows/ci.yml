@@ -1,0 +1,22 @@
+name: Test
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+        DENO_DIR: ${{ runner.workspace }}/.deno
+    steps:
+      - uses: actions/checkout@v3
+      - name: Cache Deno dependencies 
+        uses: actions/cache@v2
+        with:
+            path: ${{ env.DENO_DIR }}
+            key: ${{ hashFiles('deno.lock') }}
+      - uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x # Run with latest stable Deno.
+      - run: deno fmt --check
+      - run: deno lint
+      - run: deno task erc20

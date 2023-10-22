@@ -3,6 +3,8 @@ import { load } from "https://deno.land/std@0.204.0/dotenv/mod.ts";
 
 const env = await load();
 
+const ENDPOINT_URL = "https://bsc.nodereal.io";
+
 const ERC20_ABI = [
   // Read-Only Functions
   "function balanceOf(address owner) view returns (uint256)",
@@ -18,15 +20,16 @@ const ERC20_ABI = [
 ];
 
 async function main() {
-  const provider = new JsonRpcProvider(env.ENDPOINT_URL);
-  const wallet = new Wallet(env.PRIVATE_KEY!, provider);
-  console.log(await provider.getBalance(wallet.address));
-  //   const busdAddr = '0xeD24FC36d5Ee211Ea25A80239Fb8C4Cfd80f12Ee'
-  //   const busd = new Contract(busdAddr, ERC20_ABI, provider);
-  //   const symbol = await busd.symbol();
-  //   console.log('symbol', symbol);
-  //   const allowance = await busd.allowance('0x6836CbaCbBd1E798cC56802AC7d8BDf6Da0d0980', '0x677311Fd2cCc511Bbc0f581E8d9a07B033D5E840');
-  //   console.log('allowance', allowance.toString());
+  const provider = new JsonRpcProvider(ENDPOINT_URL);
+  const busdAddr = "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56";
+  const busd = new Contract(busdAddr, ERC20_ABI, provider);
+  const symbol = await busd.symbol();
+  console.log("symbol", symbol);
+  const balance = await busd.balanceOf(
+    "0x69E26f6Dac726C08630376E1ca04bf0008364138",
+  );
+  console.log("balance", balance.toString());
+  throw new Error("test");
 }
 
 main();
