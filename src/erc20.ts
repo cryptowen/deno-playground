@@ -26,7 +26,8 @@ async function main() {
   const symbol = await busd.symbol();
   console.log("symbol", symbol);
   const balance = await busd.balanceOf(
-    "0x69E26f6Dac726C08630376E1ca04bf0008364138",
+    // "0x69E26f6Dac726C08630376E1ca04bf0008364138",
+    "0x61Dd481A114A2E761c554B641742C973867899D3",
   );
   console.log("balance", balance.toString());
 }
